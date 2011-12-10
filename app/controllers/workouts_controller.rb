@@ -26,7 +26,8 @@ class WorkoutsController < ApplicationController
   def new
     @workout = Workout.new
 
-    5.times { @workout.workout_items.build }
+    # create an initial line item
+    @workout.workout_items.build
 
     respond_to do |format|
       format.html # new.html.erb

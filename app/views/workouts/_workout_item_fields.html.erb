@@ -1,0 +1,6 @@
+<div class="fields <%= "new" if f.object.new_record? %>">
+  <%= f.collection_select :workout_type_id, WorkoutType.all, :id, :name %>
+  <%= f.number_field :reps, :placeholder => 'Reps' %>
+  <%= f.number_field :weight, :placeholder => 'Weight' %>
+  <%= link_to_remove_fields "remove", f %>
+</div>

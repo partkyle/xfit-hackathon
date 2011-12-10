@@ -26,11 +26,10 @@
 
   <h3> workout items </h3>
   <%= f.fields_for :workout_items do |item| %>
-    <%= item.collection_select :workout_type_id, WorkoutType.all, :id, :name %>
-    <%= item.number_field :reps, :placeholder => 'Reps' %>
-    <%= item.number_field :weight, :placeholder => 'Weight' %>
-    <br/>
+    <%= render :partial => "workout_item_fields", :locals => {:f => item} %>
   <% end %>
+
+  <p><%= link_to_add_fields "Add Workout Item", f, :workout_items %></p>
 
   <div class="actions">
     <%= f.submit %>
