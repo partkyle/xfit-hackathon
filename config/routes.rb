@@ -1,4 +1,7 @@
 Xfit::Application.routes.draw do
+
+  root :to => "workouts#index"
+
   resources :workouts
 
   resources :workout_types
