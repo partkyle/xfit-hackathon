@@ -1,0 +1,11 @@
+<%%= twitter_bootstrap_form_for(@<%= singular_table_name %>) do |f| %>
+  <%%= f.inputs do %>
+<% attributes.each do |attribute| -%>
+    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+<% end -%>
+  <%% end %>
+  <div class="actions">
+    <%%= f.submit %>
+    <%%= link_to "Cancel", @<%= singular_table_name %>, :class => "btn" %>
+  </div>
+<%% end %>

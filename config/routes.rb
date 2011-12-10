@@ -1,4 +1,6 @@
 Xfit::Application.routes.draw do
+  resources :workouts
+
   resources :workout_types
 
   resources :users
