@@ -2,13 +2,15 @@
 <html>
 <head>
   <title>Xfit</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "application", "themes/jqt/theme.css" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<div id="home">
+	<div class="toolbar"><h1>xFit</h1></div>
+	<%= yield %>
+</div>
 
 </body>
 </html>
