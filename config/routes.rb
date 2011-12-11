@@ -7,6 +7,10 @@ Xfit::Application.routes.draw do
 
   post '/invite' => 'users#create', :as => :users
 
+  get '/:token' => 'users#workout'
+
+  post '/:token/results' => 'users#results'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -46,4 +46,20 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def workout
+    @user = User.find_by_token(params[:token])
+    @workout = Workout.find_by_date(Time.new.to_date)
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+  def results
+    # handle save
+
+    redirect_to "workout"
+  end
 end

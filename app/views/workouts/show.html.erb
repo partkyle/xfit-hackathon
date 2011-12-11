@@ -1,20 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @workout.title %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @workout.date %>
-</p>
-
-<p>
-  <b>Time limit:</b>
-  <%= @workout.time_limit %>
-</p>
-
+<%= render @workout %>
 
 <%= link_to 'Edit', edit_workout_path(@workout) %> |
 <%= link_to 'Back', workouts_path %>

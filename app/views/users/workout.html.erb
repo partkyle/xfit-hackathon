@@ -1,0 +1,20 @@
+<%= render @workout %>
+
+<form action="/<%= params[:token] %>/<%= @workout.date.to_formatted_s %>">
+  <% if !@workout.workout_items.blank? %>
+    <% for item in @workout.workout_items %>
+      <p>
+        <%= item.workout_type.name %>
+        <%= label_tag :reps, "Reps " + item.reps.to_s %>
+        <%= text_field_tag "reps[]" %>
+        <% if item.weight %>
+          Weight: <%= item.weight %>
+          <%= text_field_tag "weight[]" %>
+        <% end %>
+      </p>
+    <% end %>
+    <input type="submit" value="Submit Results" />
+  <% else %>
+    Looks pretty easy today.
+  <% end %>
+</form>
