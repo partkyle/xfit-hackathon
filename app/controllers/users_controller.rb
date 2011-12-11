@@ -59,7 +59,25 @@ class UsersController < ApplicationController
 
   def results
     # handle save
+    @user = User.find_by_token(params[:token])
+    @workout = Workout.find_by_date(params[:date])
 
-    redirect_to "workout"
+    workout_type_ids = params[:workout_type_ids]
+    reps = params[:reps]
+    weights = params[:weight]
+
+    workout_type_ids.length.times do |index|
+      puts workout_type_ids
+      puts workout_type_ids[index]
+      stat = Stat.new(
+        :user_id => @user.id,
+        :workout_type_id => workout_type_ids[index].to_i,
+        :reps => reps[index].to_i,
+        :weight => weights[index].to_i
+      )
+      stat.save
+    end
+
+    redirect_to "/workout"
   end
 end

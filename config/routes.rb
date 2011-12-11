@@ -9,7 +9,7 @@ Xfit::Application.routes.draw do
 
   get '/:token' => 'users#workout'
 
-  post '/:token/results' => 'users#results'
+  post '/:token/:date' => 'users#results'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
