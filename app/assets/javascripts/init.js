@@ -2,8 +2,7 @@
 
 $.jQTouch({
     icon: 'jqtouch.png',
-    statusBar: 'black-translucent',
-    formSelector: false
+    statusBar: 'black-translucent'
 });
 
 $('a').live('click', function(e){
@@ -12,7 +11,5 @@ $('a').live('click', function(e){
 })
 
 $('#submit').live('click', function(e){
-	e.preventDefault();
-	console.log($('form'));
-	$('form').trigger('submit');
+	$('form').unbind().submit();
 });
