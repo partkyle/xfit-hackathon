@@ -11,27 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :time_limit %><br />
-    <%= f.number_field :time_limit %>
-  </div>
+  <ul class="rounded">
+    <li><%= f.text_field :title, :placeholder => "Title"  %></li>
+    <li><%= f.date_select :date %></li>
+    <li><%= f.number_field :time_limit, :placeholder => "Time Limit"%></li>
+  </ul>
 
-  <h3> workout items </h3>
+  <ul>
+    <li><%= link_to_add_fields "Add Workout Item", f, :workout_items %></li>
+  </ul>
+  <h2> Workout Items </h3>
+  <div class="rounded">
   <%= f.fields_for :workout_items do |item| %>
     <%= render :partial => "workout_item_fields", :locals => {:f => item} %>
   <% end %>
-
-  <p><%= link_to_add_fields "Add Workout Item", f, :workout_items %></p>
-
-  <div class="actions">
-    <%= f.submit %>
   </div>
+  <ul class="individual">
+    <li><%= f.submit %></li>
+  </ul>
+  
 <% end %>
