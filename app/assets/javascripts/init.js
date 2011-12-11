@@ -10,3 +10,9 @@ $('a').live('click', function(e){
 	e.preventDefault();
 	window.location.href = $(this).attr('href');
 })
+
+$('#submit').live('click', function(e){
+	e.preventDefault();
+	console.log($('form'));
+	$('form').trigger('submit');
+});
