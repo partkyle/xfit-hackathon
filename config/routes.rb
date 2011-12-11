@@ -6,7 +6,9 @@ Xfit::Application.routes.draw do
 
   resources :workout_types
 
-  resources :users
+  get '/invite' => 'users#new', :as => :users
+
+  post '/invite' => 'users#create', :as => :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
