@@ -46,4 +46,39 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def workout
+    @user = User.find_by_token(params[:token])
+    @workout = Workout.find_by_date(Time.new.to_date)
+    @stats_count = Stat.where(:user_id => @user.id, :workout_id => @workout.id).count
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+  def results
+    # handle save
+    @user = User.find_by_token(params[:token])
+    @workout = Workout.find_by_date(params[:date])
+
+    workout_type_ids = params[:workout_type_ids]
+    reps = params[:reps]
+    weights = params[:weight]
+
+    @workout.workout_items.each do |workout_item|
+      index = workout_item.workout_type.id.to_s
+      stat = Stat.new(
+        :user_id => @user.id,
+        :workout_id => @workout.id,
+        :workout_type_id => index,
+        :reps => reps[index].to_i,
+        :weight => weights[index].to_i
+      )
+      stat.save
+    end
+
+    redirect_to "/" + @user.token
+  end
 end

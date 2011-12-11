@@ -1,0 +1,24 @@
+<%= render @workout %>
+
+<% if @stats_count > 0 %>
+  You already have stats for today!
+<% else %>
+  <form action="/<%= params[:token] %>/<%= @workout.date.to_formatted_s %>" method="post">
+    <% if !@workout.workout_items.blank? %>
+      <% for item in @workout.workout_items %>
+        <p>
+          <%= item.workout_type.name %>
+          <%= label_tag :reps, "Reps " + item.reps.to_s %>
+          <input type="number" name="reps[<%= item.workout_type.id %>]" value="" />
+          <% if item.weight %>
+            Weight: <%= item.weight %>
+            <input type="number" name="weight[<%= item.workout_type.id %>]" value="" />
+          <% end %>
+        </p>
+      <% end %>
+      <input type="submit" value="Submit Results" />
+    <% else %>
+      Looks pretty easy today.
+    <% end %>
+  </form>
+<% end %>
