@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @user.token ||= UUID.new.generate
 
     # send an email or something
+    InviteMailer.send_invite(@user).deliver
 
     respond_to do |format|
       if @user.save
